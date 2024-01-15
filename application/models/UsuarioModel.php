@@ -1,6 +1,6 @@
 <?php
 
-class Usuario extends CI_Model {
+class UsuarioModel extends CI_Model {
 
 	public function registro($usuario) {		
 		$this->db->insert('usuarios', $usuario);
@@ -16,7 +16,7 @@ class Usuario extends CI_Model {
 		$this->db->from('usuarios');
 		$this->db->where('id',$id);
 		$this->db->delete('usuarios');
-	
+		
 	}
 	public function editar($usuario) {
 		
@@ -24,16 +24,16 @@ class Usuario extends CI_Model {
 		$this->db->update('usuarios', $usuario);
 	}
 
-	public function get_usuario_entradas(){
-		$get_id = $this->input->post_get('id', TRUE);
-		$this->db->select('*');
+	public function get_usuario_entradas($id = 0){
+
+		$this->db->select('*, usuarios.id as id_user, entradas.id as id_entrada');
 		$this->db->from('entradas');
 		$this->db->join('usuarios', 'usuarios.id = entradas.id_usuario', 'left');
-		$this->db->where('id_usuario', $get_id);
-
+		$this->db->where('usuarios.id', $id);
 		$query = $this->db->get()->result();
-		print_r($query);
+		return $query;
 	}
+	
 
 }
 
