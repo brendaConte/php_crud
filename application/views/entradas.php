@@ -9,6 +9,16 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<link rel="stylesheet" href="styles.css">
 </head>
+<style>
+.text-table{ display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width:100px;
+} 	
+
+</style>
 
 <body>
 
@@ -42,17 +52,17 @@
 		</div> 
 		<div class="mb-3">
 			<label  class="form-label">Fecha</label>
-			<input type="date" class="form-control" name="texto" id="fecha" >
+			<input type="date" class="form-control" name="fecha" id="fecha" >
 		</div>
 		<div class="mb-3">
 			<label  class="form-label">Texto</label>
-			<input type="text" class="form-control" name="fecha" id="texto">
+			<input type="text" class="form-control" name="texto" id="texto">
 		</div>
 		<div class="mb-3">
 			<label class="form-label">Imagen</label>
 			<input type="text" class="form-control" name="imagen" id="imagen" >
 		</div>
-		<button type="submit" class="btn btn-primary" name="btnregistrar" value="ok"> Guardar</button>
+		<button type="submit" class="btn btn-primary" name="btnregistrar" value="ok"> Guardar </button>
 
 		<?php echo form_close(); ?>
 
@@ -60,8 +70,9 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th scope="col">ID</th>
-						<th scope="col">id_usuario</th>
+			
+						<th scope="col">Id. entrada</th>
+						<th scope="col">Id. Usuario</th>
 						<th scope="col">Titulo</th>
 						<th scope="col">Fecha</th>
 						<th scope="col">Texto</th>
@@ -72,20 +83,19 @@
 					<?php 
 					foreach ($entradas as $entradas) { ?>
 						<tr>
-							<td><?php echo $entradas->id; ?></td>
+							<td ><?php echo $entradas->id; ?></td>
 							<td><?php echo $entradas->id_usuario; ?></td>
 							<td><?php echo $entradas->titulo; ?></td>
 							<td><?php echo $entradas->fecha; ?></td>
-							<td><?php echo $entradas->texto; ?></td>
-							<td><?php echo $entradas->imagen; ?></td>
+							<td class="text-table"><?php echo $entradas->texto; ?></td>
+							<td class=""><img src="<?php echo $entradas->imagen; ?>" style="height: 25px; width: 25px;"></td>
 							<td> 
-								<a href="javascript:void(0)" class="btn btn-small btn-warning" type="button" onclick="llenar_campos('<?php echo $entradas->id ?>','<?php echo $entradas->id ?>','<?php echo $entradas->titulo ?>','<?php echo $entradas->texto?>','<?php  echo $entradas->imagen; ?>' )">Editar</a>
+								<a href="javascript:void(0)" class="btn btn-small btn-warning" type="button" onclick="llenar_campos('<?php echo $entradas->id ?>','<?php echo $entradas->id_usuario ?>','<?php echo $entradas->titulo ?>','<?php echo $entradas->fecha?>','<?php echo $entradas->texto?>','<?php  echo $entradas->imagen; ?>' )">Editar</a>
 							</td>
 							<td><a href="<?php echo base_url('EntradasController/eliminar/'.$entradas->id) ?>" class="btn btn-small btn-danger"> Eliminar </a></td>
 							<td><a href="<?php echo base_url('EntradasController/ver_detalle/'.$entradas->id) ?>" class="btn btn-small btn-success"> Ver mas </a></td>
 						</tr> 
 					<?php } ?>
-
 				</tbody>
 			</table>
 
@@ -100,7 +110,8 @@
 
 		const llenar_campos = (id, id_usuario, titulo, fecha , texto , imagen) => {
 			let path= url + "/" + id ;
-
+console.log(fecha) 
+console.log(texto) 
 			document.getElementById('form-entradas').setAttribute('action', path)
 			document.getElementById('id_usuario').value = id_usuario;
 			document.getElementById('titulo').value = titulo;

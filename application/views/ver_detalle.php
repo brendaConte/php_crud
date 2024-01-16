@@ -34,7 +34,16 @@
         }
         .card-link {
             margin-top: auto;  /* Empuja los enlaces hacia la parte inferior */
+            padding-bottom: 10px;
         }
+
+        .card-text{
+            overflow-y: scroll;
+            height: 200px;
+        }
+        .card-title{
+    padding-top: 15px;
+}
        
     </style>
 
@@ -42,17 +51,17 @@
 
     <body>
 
-        <div class="">
+        <div class="col-12 col-md-6">
 
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 100%;">
                 <div class="card-body">
-                    <img src="<?php echo $entradas->imagen ?>">
+                    <img src="<?php echo $entradas->imagen ?>" style="height: 150px;object-fit: cover;width: 100%;">
                     <h5 class="card-title"><?php echo $entradas->titulo; ?> </h5>
                     <h6 class="card-subtitle mb-2 text-body-secondary"><?php echo $entradas->fecha; ?> </h6>
                     <p class="card-text"><?php echo $entradas->texto; ?></p>
                    <div class="card-link">
                         <a  href="<?php echo base_url('EntradasController') ?>" class="card-link">Volver</a>
-                        <a  href="<?php echo base_url('Welcome/ver_listado') ?>" class="card-link">Entradas del usuario</a>
+                        <a  href="<?php echo base_url('Welcome/ver_listado/').$entradas->id_usuario ?>" class="card-link">Entradas del usuario</a>
                     </div> 
                 </div>
             </div>

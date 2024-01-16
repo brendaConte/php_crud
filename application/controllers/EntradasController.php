@@ -23,8 +23,8 @@ class EntradasController extends CI_Controller {
 	public function registro() {
 		$entradas['id_usuario'] = $this->input->post('id_usuario');
 		$entradas['titulo'] = $this->input->post('titulo');
-		$entradas['texto'] = $this->input->post('texto');	
 		$entradas['fecha'] = $this->input->post('fecha');
+		$entradas['texto'] = $this->input->post('texto');	
 		$entradas['imagen'] = $this->input->post('imagen');
 
 		$this->EntradasModel->registro($entradas);
@@ -41,8 +41,8 @@ class EntradasController extends CI_Controller {
 			$entradas['id'] = $id;
 			$entradas['id_usuario'] = $this->input->post('id_usuario');
 			$entradas['titulo'] = $this->input->post('titulo');
-			$entradas['texto'] = $this->input->post('texto');
 			$entradas['fecha'] = $this->input->post('fecha');
+			$entradas['texto'] = $this->input->post('texto');
 			$entradas['imagen'] = $this->input->post('imagen');
 			$this->EntradasModel->editar($entradas);
 			redirect('EntradasController');
