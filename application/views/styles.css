@@ -1,0 +1,105 @@
+
+/*Header*/
+    .navbar {
+            padding-right: 30px;
+            padding-left: 30px;
+            background-color:#216B79; 
+            }
+    .logo {
+            width: 180px;
+            height: auto;
+            }
+    .dropdown-toggle {
+            background-color:#E4EDEE;
+            }
+
+/*Index.php*/
+    .box-1 {
+            margin: 10px auto;
+                 }
+            .box2 {
+              border: 2px solid #216B79;
+              border-radius: 30px ;
+              padding: 30px; 
+              background-color: #A7B0B3;
+              width: 90%;
+              margin: 10px auto;
+              text-align: left;
+
+            }
+            .title {
+             text-align: center; 
+            }
+            .contenedor-principal {
+              margin: 15px auto;
+              text-align: center;
+            }
+            .tabla {
+
+           
+              padding: 30px; 
+              width: 90%;
+              margin: 15px auto;
+            }
+            td ,th {
+              padding: 20px;
+              text-align: center;}
+
+/* Entradas */
+
+
+
+
+
+/* Ver_listado */
+   .text-table{ display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width:100px;
+            }   
+            .container{
+                padding-top: 20px;
+            }
+            .card-link{
+                padding-right: 60px;
+            }
+            .card-title{
+                padding-bottom: 20px;
+            }
+
+/* Ver_detalle: */
+        body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .card {
+                width: 300px; /* Ajusta el ancho según tus necesidades */
+                height: 500px;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                align-items: center;
+            }
+            .card-body {
+                flex-grow: 1;  /* Hace que el contenido principal de la tarjeta ocupe todo el espacio disponible */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;  /* Alinea los elementos verticalmente con espacio entre ellos */
+            }
+            .card-link {
+                margin-top: auto;  /* Empuja los enlaces hacia la parte inferior */
+                padding-bottom: 10px;
+            }
+            .card-text{
+                overflow-y: scroll;
+                height: 200px;
+            }
+            .card-title{
+                padding-top: 15px;
+    }

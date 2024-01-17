@@ -7,7 +7,7 @@
 	<title>Entradas</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-	<link rel="stylesheet" href="styles.css">
+	<!-- <link rel="stylesheet" href="styles.css"> -->
 </head>
 <style>
 .text-table{ display: -webkit-box;
@@ -21,7 +21,7 @@
 </style>
 
 <body>
-
+<link href="<?php echo base_url()?>assets/css/styles.css" rel="stylesheet" type="text/css">
 	<div class="container-fluid row">
 
 		
@@ -66,7 +66,7 @@
 
 		<?php echo form_close(); ?>
 
-		<div class="col-12 p-4">
+		<div class="col-12 ">
 			<table class="table">
 				<thead>
 					<tr>
@@ -77,6 +77,9 @@
 						<th scope="col">Fecha</th>
 						<th scope="col">Texto</th>
 						<th scope="col">Imagen</th>
+						<th scope="col"></th>
+						<th scope="col"></th>
+						<th scope="col"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -121,7 +124,7 @@ console.log(texto)
 		};
 
 	</script>
-
+<?php include "includes/footer.php"; ?>
 </body>
 
 </html>

@@ -1,0 +1,15 @@
+
+/*Header*/
+   .navbar {
+            padding-right: 30px;
+            padding-left: 30px;
+            background-color:#216B79; 
+    }
+        .logo {
+            width: 180px;
+            height: auto;
+
+    }
+    .dropdown-toggle {
+        background-color:#E4EDEE;
+         }

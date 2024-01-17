@@ -7,28 +7,29 @@
     <title>Listado de entradas</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+   
     <style>
-.text-table{ display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width:100px;
-}   
-.container{
-    padding-top: 20px;
-}
-.card-link{
-    padding-right: 60px;
-}
-.card-title{
-    padding-bottom: 20px;
-}
-</style>
+        .text-table{ display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width:100px;
+        }   
+        .container{
+            padding-top: 20px;
+        }
+        .card-link{
+            padding-right: 60px;
+        }
+        .card-title{
+            padding-bottom: 20px;
+        }
+    </style>
 </head>                        
 
         <body>
+             <link href="<?php echo base_url()?>assets/css/styles.css" rel="stylesheet" type="text/css">
             <div class="container ">
                 <div class="row ">
 

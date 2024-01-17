@@ -1,8 +1,9 @@
 <header >
 
-    <style> 
+  <!--   <style> 
         .navbar {
-
+            padding-right: 30px;
+            padding-left: 30px;
             background-color:#216B79; 
     }
         .logo {
@@ -13,7 +14,7 @@
     .dropdown-toggle {
         background-color:#E4EDEE;
          }
-    </style>
+    </style> -->
 
     <nav class="navbar">
       <div class="container-fluid">
