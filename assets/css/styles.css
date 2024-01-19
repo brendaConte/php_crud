@@ -1,6 +1,6 @@
 /* Header */
 
-.navbar {
+.navbar-header {
     padding-right: 30px;
     padding-left: 30px;
     background-color: #216B79;
@@ -93,7 +93,7 @@ body {
     margin: 0;
 }
 
-.card {
+.card-detail {
     width: 300px;
     /* Ajusta el ancho según tus necesidades */
     height: 500px;
@@ -104,7 +104,7 @@ body {
     align-items: center;
 }
 
-.card-body {
+.card-detail-body {
     flex-grow: 1;
     /* Hace que el contenido principal de la tarjeta ocupe todo el espacio disponible */
     display: flex;
@@ -112,16 +112,16 @@ body {
     justify-content: space-between;
 }
 
-.card-link {
+.card-detail-links {
     margin-top: auto;
     padding-bottom: 10px;
 }
 
-.card-text {
+.card-detail-text {
     overflow-y: scroll;
     height: 200px;
 }
 
-.card-title {
+.card-detail-title {
     padding-top: 15px;
 }
