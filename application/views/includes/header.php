@@ -1,23 +1,6 @@
-<header >
-
-  <!--   <style> 
-        .navbar {
-            padding-right: 30px;
-            padding-left: 30px;
-            background-color:#216B79; 
-    }
-        .logo {
-            width: 180px;
-            height: auto;
-
-    }
-    .dropdown-toggle {
-        background-color:#E4EDEE;
-         }
-    </style> -->
-
+<header class="container-fluid" >
     <nav class="navbar">
-      <div class="container-fluid">
+
         <a class="navbar-brand" href="<?php echo base_url('EntradasController') ?>">
           <img class="logo" src="https://www.varcreative.com/frontend/varcreative23/assets/images/logo.png">
         </a>
@@ -38,8 +21,7 @@
                 </li>
               </ul>
             </div>
-        </div>
-      </div>
-    </nav>
 
+        </div>
+    </nav>
 </header>

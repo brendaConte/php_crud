@@ -17,7 +17,6 @@ class EntradasController extends CI_Controller {
 		$datos['usuarios'] = $this->UsuarioModel->seleccionar_todo();
 		$this->UsuarioModel->get_usuario_entradas();
 		$this->load->view('entradas', $datos );
-
 	}
 
 	public function registro() {
@@ -25,17 +24,24 @@ class EntradasController extends CI_Controller {
 		$entradas['titulo'] = $this->input->post('titulo');
 		$entradas['fecha'] = $this->input->post('fecha');
 		$entradas['texto'] = $this->input->post('texto');	
-		$entradas['imagen'] = $this->input->post('imagen');
+		$entradas['imagen'] = $_FILES['imagen']['name'];
+		
+
+		if (isset($_FILES['imagen'])) {
+			$archivo = $_FILES['imagen'];
+			if (isset($archivo) && $archivo != "") {
+				$this->EntradasModel->guardar_imagen($archivo);
+			}
+		}
 
 		$this->EntradasModel->registro($entradas);
 		redirect('EntradasController');
 	}
  
-
 	public function eliminar($id) {
 			$this->EntradasModel->eliminar($id);
 			redirect('EntradasController');
-		}
+	}
 
 	public function editar($id) {
 			$entradas['id'] = $id;
@@ -46,7 +52,7 @@ class EntradasController extends CI_Controller {
 			$entradas['imagen'] = $this->input->post('imagen');
 			$this->EntradasModel->editar($entradas);
 			redirect('EntradasController');
-		}
+	}
 
 	public function ver_detalle($id = 0){
 		$datos['entradas'] = $this->EntradasModel->get_entrada($id);
@@ -54,6 +60,6 @@ class EntradasController extends CI_Controller {
 				$this->load->view('ver_detalle', $datos); }
 
 	}
-
+	
 }
 

@@ -1,41 +1,28 @@
-
 <!DOCTYPE html>
-<html lang="es">
+	<html lang="es">
 
-<head>
-	<meta charset="UTF-8">
-	<title>Entradas</title>
+		<head>
+			<meta charset="UTF-8">
+			<title>Entradas</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-	<!-- <link rel="stylesheet" href="styles.css"> -->
-</head>
-<style>
-.text-table{ display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width:100px;
-} 	
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		    <link href="<?php echo base_url()?>assets/css/styles.css" rel="stylesheet" type="text/css">
 
-</style>
-
+		</head>
 <body>
-<link href="<?php echo base_url()?>assets/css/styles.css" rel="stylesheet" type="text/css">
-	<div class="container-fluid row">
 
-		
+	<?php include "includes/header.php"; ?>
+
+	<div class="container-fluid row">
 
 		<h3>Formulario entradas</h3>
 
-
+		<?php echo form_open_multipart('EntradasController/registro' , ['enctype'=>'multipart/form-data', 'id'=>'form-entradas']); ?>
 		<div class="mb-3">
 			<label class="form-label" >id usuario </label>
-
-			<?php echo form_open('EntradasController/registro' , ['id'=>'form-entradas']); ?>
+			
 			<input type="hidden"  name="id" id="id" value="">
 			<select type="text" class="form-control" name="id_usuario" id="id_usuario">
-
 
 				<?php foreach ($usuarios as $usuario): ?> 
 
@@ -59,8 +46,12 @@
 			<input type="text" class="form-control" name="texto" id="texto">
 		</div>
 		<div class="mb-3">
-			<label class="form-label">Imagen</label>
-			<input type="text" class="form-control" name="imagen" id="imagen" >
+
+			<label class="form-label">Subir imagen</label>
+			<input name="imagen" id="imagen" type="file"/>
+
+			<!-- <input type="submit" name="imagen" value="Subir imagen"/> -->
+
 		</div>
 		<button type="submit" class="btn btn-primary" name="btnregistrar" value="ok"> Guardar </button>
 
@@ -70,7 +61,6 @@
 			<table class="table">
 				<thead>
 					<tr>
-			
 						<th scope="col">Id. entrada</th>
 						<th scope="col">Id. Usuario</th>
 						<th scope="col">Titulo</th>
@@ -90,8 +80,8 @@
 							<td><?php echo $entradas->id_usuario; ?></td>
 							<td><?php echo $entradas->titulo; ?></td>
 							<td><?php echo $entradas->fecha; ?></td>
-							<td class="text-table"><?php echo $entradas->texto; ?></td>
-							<td class=""><img src="<?php echo $entradas->imagen; ?>" style="height: 25px; width: 25px;"></td>
+							<td class="<?php echo strlen($entradas->texto) > 50 ? 'text-table' : ''; ?>"><?php echo $entradas->texto; ?></td>
+							<td class=""><img src="uploads/images/<?php echo $entradas->imagen; ?>" style="height: 25px; width: 25px;"></td>
 							<td> 
 								<a href="javascript:void(0)" class="btn btn-small btn-warning" type="button" onclick="llenar_campos('<?php echo $entradas->id ?>','<?php echo $entradas->id_usuario ?>','<?php echo $entradas->titulo ?>','<?php echo $entradas->fecha?>','<?php echo $entradas->texto?>','<?php  echo $entradas->imagen; ?>' )">Editar</a>
 							</td>
@@ -113,8 +103,6 @@
 
 		const llenar_campos = (id, id_usuario, titulo, fecha , texto , imagen) => {
 			let path= url + "/" + id ;
-console.log(fecha) 
-console.log(texto) 
 			document.getElementById('form-entradas').setAttribute('action', path)
 			document.getElementById('id_usuario').value = id_usuario;
 			document.getElementById('titulo').value = titulo;
@@ -124,7 +112,7 @@ console.log(texto)
 		};
 
 	</script>
-<?php include "includes/footer.php"; ?>
+
 </body>
 
 </html>

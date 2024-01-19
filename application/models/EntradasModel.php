@@ -2,8 +2,10 @@
 
 class EntradasModel extends CI_Model {
 
-	public function registro($entradas) {		
+	public function registro($entradas) {
+
 		$this->db->insert('entradas', $entradas);
+
 
 	}
 
@@ -34,5 +36,10 @@ class EntradasModel extends CI_Model {
 		$query = $this->db->get()->row();
 	
 		return $query;
+	}
+	public function guardar_imagen($imagen) {
+		$temp = $imagen['tmp_name'];
+		$archivo = $imagen['name'];
+		$r = move_uploaded_file($temp, 'uploads/images/'.$archivo);
 	}
 }
