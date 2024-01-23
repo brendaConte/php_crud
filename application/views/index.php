@@ -12,9 +12,8 @@
 </head>
 
 <body>
-
+ <?php include "includes/header.php"; ?>
   <div class="container-fluid row contenedor-principal"> 
-  <?php include "includes/header.php"; ?>
 
       <div class="col-12 p-4 box-1">
            <table class="table table-hover tabla">

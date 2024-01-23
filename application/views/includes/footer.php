@@ -1,4 +1,4 @@
-  <footer class="text-center text-lg-start" style="background-color: #216B79;">
+  <footer class="text-center text-lg-start" style="background-color: #216B79; width: 100% ; margin-top: auto;">
     <!-- Copyright -->
     <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
       © 2024 Copyright : 

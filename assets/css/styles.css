@@ -37,7 +37,7 @@
 }
 
 .contenedor-principal {
-    margin: 15px auto;
+   /* margin: 15px auto;*/
     text-align: center;
 }
 
@@ -54,8 +54,6 @@ th {
 }
 
 /* Entradas */
-
-
 
 
 
@@ -85,7 +83,7 @@ th {
 
 /* Ver_detalle: */
 
-body {
+.container-detalle {
 
     align-items: center;
     justify-content: center;
@@ -95,8 +93,7 @@ body {
 
 .card-detail {
     width: 300px;
-    /* Ajusta el ancho según tus necesidades */
-    height: 500px;
+   
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -113,13 +110,15 @@ body {
 }
 
 .card-detail-links {
-    margin-top: auto;
-    padding-bottom: 10px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
 }
 
 .card-detail-text {
-    overflow-y: scroll;
-    height: 200px;
+    overflow-y: auto;
+      max-height: 200px;
+    margin-bottom: 10px;
 }
 
 .card-detail-title {

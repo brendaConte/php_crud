@@ -10,11 +10,9 @@
 
 		</head>
 <body>
-
-	<?php include "includes/header.php"; ?>
-
+<?php include "includes/header.php"; ?>
 	<div class="container-fluid row">
-
+	
 		<h3>Formulario entradas</h3>
 
 		<?php echo form_open_multipart('EntradasController/registro' , ['enctype'=>'multipart/form-data', 'id'=>'form-entradas']); ?>
@@ -112,6 +110,7 @@
 		};
 
 	</script>
+	    <?php include "includes/footer.php"; ?>
 
 </body>
 

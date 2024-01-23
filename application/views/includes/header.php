@@ -1,5 +1,5 @@
-<header class="container-fluid" >
-    <nav class="navbar navbar-header">
+<header  >
+    <nav class="navbar navbar-header" >
 
         <a class="navbar-brand " href="<?php echo base_url('EntradasController') ?>">
           <img class="logo" src="https://www.varcreative.com/frontend/varcreative23/assets/images/logo.png">
