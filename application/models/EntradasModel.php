@@ -5,8 +5,6 @@ class EntradasModel extends CI_Model {
 	public function registro($entradas) {
 
 		$this->db->insert('entradas', $entradas);
-
-
 	}
 
 	public function seleccionar_todo() {
@@ -26,7 +24,7 @@ class EntradasModel extends CI_Model {
 		$this->db->update('entradas', $entrada);
 	}
 
-	public function get_entrada($id = 0){
+	public function get_entrada($id = 0) {
 
 		$this->db->select('*');
 		$this->db->from('entradas');

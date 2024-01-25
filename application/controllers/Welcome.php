@@ -51,7 +51,6 @@ class Welcome extends CI_Controller {
 				$this->load->view('ver_listado', $datos); }
         }
 			
-		
-		}
+	}
 	
 
