@@ -25,7 +25,6 @@ class EntradasController extends CI_Controller {
 		$entradas['fecha'] = $this->input->post('fecha');
 		$entradas['texto'] = $this->input->post('texto');	
 		$entradas['imagen'] = $_FILES['imagen']['name'];
-		
 
 		if (isset($_FILES['imagen'])) {
 			$archivo = $_FILES['imagen'];
@@ -33,7 +32,6 @@ class EntradasController extends CI_Controller {
 				$this->EntradasModel->guardar_imagen($archivo);
 			}
 		}
-
 		$this->EntradasModel->registro($entradas);
 		redirect('EntradasController');
 	}
@@ -58,7 +56,6 @@ class EntradasController extends CI_Controller {
 		$datos['entradas'] = $this->EntradasModel->get_entrada($id);
 			if ($datos['entradas']) {
 				$this->load->view('ver_detalle', $datos); }
-
 	}
 	
 }

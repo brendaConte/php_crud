@@ -11,11 +11,13 @@ class Welcome extends CI_Controller {
 	}
 
 	public function index()
-	{
-		$datos['usuarios']= $this->UsuarioModel->seleccionar_todo();
-		
-		$this->load->view('index', $datos);
-	}
+		{
+			$datos['usuarios']= $this->UsuarioModel->seleccionar_todo();
+			$this->load->view('index', $datos);
+		}
+	public function () {
+
+		}
 
 	public function registro() {
 		if($this->input->post()) 
@@ -29,26 +31,25 @@ class Welcome extends CI_Controller {
 		$this->UsuarioModel->registro($usuario);
 		redirect('Welcome');  } }
 
-		public function eliminar($id) {
-			$this->UsuarioModel->eliminar($id);
-			redirect('Welcome');
+	public function eliminar($id) {
+		$this->UsuarioModel->eliminar($id);
+		redirect('Welcome');
 		}
 
-		public function editar($id) {
-			$usuario['id'] = $this-> input->post('id');
-			$usuario['nombre'] = $this-> input->post('nombre');
-			$usuario['email'] = $this-> input->post('email');
-			$usuario['telefono'] = $this-> input->post('telefono');
-			$usuario['fecha_nac'] = $this-> input->post('fecha_nac');
-			$this->UsuarioModel->editar($usuario);
-			redirect('Welcome');
+	public function editar($id) {
+		$usuario['id'] = $this-> input->post('id');
+		$usuario['nombre'] = $this-> input->post('nombre');
+		$usuario['email'] = $this-> input->post('email');
+		$usuario['telefono'] = $this-> input->post('telefono');
+		$usuario['fecha_nac'] = $this-> input->post('fecha_nac');
+		$this->UsuarioModel->editar($usuario);
+		redirect('Welcome');
 		}
 
-		public function ver_listado($id) {
-
-			$datos['entradas'] = $this->UsuarioModel->get_usuario_entradas($id);
-			if ($datos['entradas']) {
-				$this->load->view('ver_listado', $datos); }
+	public function ver_listado($id) {
+		$datos['entradas'] = $this->UsuarioModel->get_usuario_entradas($id);
+		if ($datos['entradas']) {
+		$this->load->view('ver_listado', $datos); }
         }
 			
 	}

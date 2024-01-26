@@ -40,7 +40,7 @@ class UsuarioModel extends CI_Model {
 	}
 
 	public function get_usuario_entradas($id = 0) {
-
+	
 	/* $this->db->select('*, usuarios.id as id_user, entradas.id as id_entrada');
 		$this->db->from('entradas');
 		$this->db->join('usuarios', 'usuarios.id = entradas.id_usuario', 'left');

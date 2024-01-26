@@ -50,5 +50,4 @@ class Api extends RestController {
     $this->response($datos, 200);
     }
     
-
 }
