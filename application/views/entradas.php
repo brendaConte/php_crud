@@ -48,8 +48,6 @@
 			<label class="form-label">Subir imagen</label>
 			<input name="imagen" id="imagen" type="file"/>
 
-			<!-- <input type="submit" name="imagen" value="Subir imagen"/> -->
-
 		</div>
 		<button type="submit" class="btn btn-primary" name="btnregistrar" value="ok"> Guardar </button>
 

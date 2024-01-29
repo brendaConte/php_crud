@@ -15,9 +15,6 @@ class Welcome extends CI_Controller {
 			$datos['usuarios']= $this->UsuarioModel->seleccionar_todo();
 			$this->load->view('index', $datos);
 		}
-	public function () {
-
-		}
 
 	public function registro() {
 		if($this->input->post()) 
@@ -29,7 +26,7 @@ class Welcome extends CI_Controller {
 		$usuario['fecha_nac'] = $this-> input->post('fecha_nac');
 
 		$this->UsuarioModel->registro($usuario);
-		redirect('Welcome');  } }
+		redirect('Welcome');   }}
 
 	public function eliminar($id) {
 		$this->UsuarioModel->eliminar($id);
