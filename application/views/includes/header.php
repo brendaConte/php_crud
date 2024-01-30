@@ -11,13 +11,12 @@
               </button>
               <ul class="dropdown-menu">
                 <li>
-                    <a class="" href="<?php echo base_url('') ?>"><button class="dropdown-item" type="button">Registrarse</button></a>
-                </li>
-                <li>
                     <a class="" href="<?php echo base_url('Welcome') ?>"><button class="dropdown-item" type="button">Usuarios</button></a>
                 </li>
                 <li>
-                  <a class="" href="<?php echo base_url('EntradasController') ?>"><button class="dropdown-item" type="button">Entradas</button></a>  
+                  <a class="" href="<?php echo base_url('EntradasController') ?>"><button class="dropdown-item" type="button">Entradas</button></a></li>
+                <li>
+                  <a class="" href="<?php echo base_url('Auth/LoginController') ?>"><button class="dropdown-item" type="button">Iniciar sesión</button></a>  
                 </li>
               </ul>
             </div>

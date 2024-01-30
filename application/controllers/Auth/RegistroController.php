@@ -7,7 +7,7 @@ class RegistroController extends CI_Controller {
 			parent::__construct();
 			$this->load->helper('form');
 		    $this->load->library('form_validation');
-
+		    $this->load->library('session');
 		    $this->load->model('UsuarioModel');
 		}
 
@@ -17,32 +17,35 @@ class RegistroController extends CI_Controller {
 			$this->load->view('includes/footer');
 		}
 
-		public function login() {
-			$this->form_validation->set_rules('name','Name', 'trim|required|alpha');
-			$this->form_validation->set_rules('email','Email ID', 'trim|required|valid_email|is_unique[usuarios.email]');
-			$this->form_validation->set_rules('telefono','Telefono', 'trim|required|alpha');
-			$this->form_validation->set_rules('fecha_nac','Name', 'trim|required|alpha');
-			$this->form_validation->set_rules('contraseña','contraseña', 'trim|required');
-			$this->form_validation->set_rules('confcontraseña','confcontraseña', 'trim|required|matches[contraseña]');
-			if($this->form_validation->run() == FALSE) 
-			{ 
-			$this->index();
-			}
-			else
-				{ $data= array(
+		public function registro() {
+			$this->form_validation->set_rules('nombre','Nombre', 'trim|required|alpha');
+			$this->form_validation->set_rules('email','E-mail', 'trim|required|valid_email|is_unique[usuarios.email]');
+			$this->form_validation->set_rules('telefono','Telefono','trim|required|numeric');
+			$this->form_validation->set_rules('fecha_nac','Fecha de nacimiento', 'trim|required');
+			$this->form_validation->set_rules('contraseña','Contraseña', 'trim|required');
+			$this->form_validation->set_rules('confcontraseña','Confirmar contraseña', 'trim|required|matches[contraseña]');
+			if($this->form_validation->run() == FALSE) { 
+				$this->index();
+				}
+				else{ 
+					$data= array(
 					'nombre' => $this->input->post('nombre'),
 					'email' => $this->input->post('email'),
-					'contraseña' => $this->input->post('contraseña') );
-			$registro_usuario = new UsuarioModel ;
-			$checking = $registro_usuario->registro_usuario($data);
-			if($checking) {
-				$this->sesion->set_flashdata('status','Registro exitoso , inicia sesion ') ;
-				redirect(base_url('login')) ;
-			}
-			else {
-				$this->sesion->set_flashdata('status','Falló su registro') ;
-				redirect(base_url('entradas')) ;
-			}
+					'telefono' => $this->input->post('telefono'),
+					'fecha_nac' => $this->input->post('fecha_nac'),
+					'contraseña' => password_hash($this->input->post('contraseña'), PASSWORD_DEFAULT) );
+				$registro_usuario = new UsuarioModel;
+				$checking = $registro_usuario->registro($data);
+				if($checking) {
+					echo "entra";
+					$this->session->set_flashdata('status','Registro exitoso , iniciá sesión ') ;
+					redirect(base_url('Auth/LoginController')) ;
+				}
+				else {
+					echo "no entra";
+					$this->session->set_flashdata('status','Falló su registro') ;
+					redirect(base_url('registro')) ;
+				}
 
 			}
 		}

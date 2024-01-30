@@ -2,10 +2,44 @@
 
 class UsuarioModel extends CI_Model {
 
-	public function registro($usuario) {		
-		$this->db->insert('usuarios', $usuario);
-
+	public function registro($usuario) {	
+		$usuario['contraseña'] = password_hash($usuario['contraseña'], PASSWORD_DEFAULT);	
+		$respuesta = $this->db->insert('usuarios', $usuario);
+		return $respuesta;
 	}
+
+	public function loginUser($usuario) {
+		$this->db->select('*');
+		$this->db->where('email', $usuario['email']);
+		$this->db->where('contraseña', $usuario['contraseña']);
+		$this->db->from('usuarios');
+		$this->db->limit(1);
+		$query = $this->db->get();
+		if($query->num_rows() == 1){
+			return $query->row();
+		}else {
+			return false;
+		}
+	}
+
+
+	public function verificar_credenciales($email, $contraseña) {
+        $this->db->select('id, contraseña');
+        $this->db->from('usuarios');
+        $this->db->where('email', $email);
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 1) {
+            $usuario = $query->row();
+            // Verificar la contraseña utilizando password_verify
+            if (password_verify($contraseña, $usuario->contraseña)) {
+                // Contraseña válida
+                return $usuario->id;
+            }
+        }
+        // Credenciales no válidas
+        return false;
+    }
 
 	public function seleccionar_todo() {
 
@@ -28,7 +62,6 @@ class UsuarioModel extends CI_Model {
 		$this->db->delete('usuarios');
 
 	/*	$sql = "DELETE FROM usuarios WHERE id = $id" ;*/
-
 	}
 
 	public function editar($usuario) {
