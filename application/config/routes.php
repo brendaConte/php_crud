@@ -60,3 +60,5 @@ $route['registro']['POST'] = 'Auth/RegistroController/registro' ;
 
 $route['login']['GET'] = 'Auth/LoginController/index' ;
 $route['login']['POST'] = 'Auth/LoginController/login' ;
+
+$route['user_page']['GET'] = 'Auth/LoginController/user_page' ;

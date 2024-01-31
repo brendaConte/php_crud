@@ -28,28 +28,24 @@ class RegistroController extends CI_Controller {
 				$this->index();
 				}
 				else{ 
-					$data= array(
+					$usuario= array(
 					'nombre' => $this->input->post('nombre'),
 					'email' => $this->input->post('email'),
 					'telefono' => $this->input->post('telefono'),
 					'fecha_nac' => $this->input->post('fecha_nac'),
-					'contraseña' => password_hash($this->input->post('contraseña'), PASSWORD_DEFAULT) );
-				$registro_usuario = new UsuarioModel;
-				$checking = $registro_usuario->registro($data);
-				if($checking) {
-					echo "entra";
-					$this->session->set_flashdata('status','Registro exitoso , iniciá sesión ') ;
-					redirect(base_url('Auth/LoginController')) ;
-				}
-				else {
-					echo "no entra";
+					'contraseña' => md5($this->input->post('contraseña'))
+					$registro_usuario = new UsuarioModel;
+					$checking = $registro_usuario->registro($usuario);
+					if($checking) {
+						$this->session->set_flashdata('status','Registro exitoso , iniciá sesión ') ;
+						redirect(base_url('Auth/LoginController')) ;
+					}
+				else{
 					$this->session->set_flashdata('status','Falló su registro') ;
 					redirect(base_url('registro')) ;
+					}
 				}
-
-			}
 		}
-
 	}
 
 ?>

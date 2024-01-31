@@ -3,7 +3,7 @@
 class UsuarioModel extends CI_Model {
 
 	public function registro($usuario) {	
-		$usuario['contraseña'] = password_hash($usuario['contraseña'], PASSWORD_DEFAULT);	
+		$usuario['contraseña'] = md5($usuario['contraseña']);
 		$respuesta = $this->db->insert('usuarios', $usuario);
 		return $respuesta;
 	}
@@ -11,15 +11,29 @@ class UsuarioModel extends CI_Model {
 	public function loginUser($usuario) {
 		$this->db->select('*');
 		$this->db->where('email', $usuario['email']);
-		$this->db->where('contraseña', $usuario['contraseña']);
 		$this->db->from('usuarios');
 		$this->db->limit(1);
 		$query = $this->db->get();
-		if($query->num_rows() == 1){
-			return $query->row();
-		}else {
-			return false;
-		}
+
+			if($query->num_rows() == 1) {
+				$result = $query->row();
+				$enteredPassword = md5($usuario['contraseña']);
+				$hashedPasswordFromDB = $result->contraseña; 
+					if ($enteredPassword == $hashedPasswordFromDB) {
+						//contraseña correcta redirigir
+						return $result;
+					} 	else {
+						//incorrecta
+						return false; }
+				}
+			else {
+				//no se encontró ningun usuario con el email ingresado 
+				return false;
+			}
+	}
+
+	public function userPage() {
+		$this->load->view('userpage') ;
 	}
 
 
